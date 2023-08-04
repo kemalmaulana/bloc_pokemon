@@ -1,6 +1,6 @@
-import 'package:bloc_pokemon/model/detail_pokemon_model.dart';
-import 'package:bloc_pokemon/model/form_pokemon_model.dart';
-import 'package:bloc_pokemon/model/species_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/detail_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/form_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/species_pokemon_model.dart';
 import 'package:equatable/equatable.dart';
 
 sealed class DetailPokemonState extends Equatable {}

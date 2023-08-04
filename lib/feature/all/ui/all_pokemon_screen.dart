@@ -1,10 +1,10 @@
 import 'package:basic_utils/basic_utils.dart';
+import 'package:bloc_pokemon/core/helper/context_extension.dart';
 import 'package:bloc_pokemon/feature/all/bloc/all_pokemon_bloc.dart';
 import 'package:bloc_pokemon/feature/all/bloc/all_pokemon_event.dart';
 import 'package:bloc_pokemon/feature/all/bloc/all_pokemon_state.dart';
 import 'package:bloc_pokemon/feature/detail/ui/detail_pokemon_screen.dart';
-import 'package:bloc_pokemon/model/all_pokemon_model.dart';
-import 'package:bloc_pokemon/repos/repositories.dart';
+import 'package:bloc_pokemon/data/model/all_pokemon_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,9 +16,7 @@ class AllPokemonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          AllPokemonBloc(RepositoryProvider.of<Repositories>(context))
-            ..add(LoadAllPokemonEvent()),
+      create: (context) => AllPokemonBloc()..add(LoadAllPokemonEvent()),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Pokédex"),
@@ -34,16 +32,12 @@ class AllPokemonScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, Results item,
                               int index) =>
                           InkWell(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (_) => RepositoryProvider(
-                                          create: (context) => Repositories(),
-                                          child: DetailPokemonScreen(
-                                              pokemonId: int.tryParse(
-                                                      state.getPokemonId(
-                                                          item.url ?? "-")) ??
-                                                  1, pokemonName: item.name ?? "-",),
-                                        ))),
+                            onTap: () => context.push(destination: DetailPokemonScreen(
+                              pokemonId: int.tryParse(
+                                  state.getPokemonId(item.url ?? "-")) ??
+                                  1,
+                              pokemonName: item.name ?? "-",
+                            )),
                             child: Container(
                               margin: const EdgeInsets.all(4),
                               decoration: BoxDecoration(

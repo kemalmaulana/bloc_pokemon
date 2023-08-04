@@ -1,16 +1,14 @@
+import 'package:bloc_pokemon/base/base_bloc.dart';
 import 'package:bloc_pokemon/feature/detail/bloc/detail_pokemon_event.dart';
 import 'package:bloc_pokemon/feature/detail/bloc/detail_pokemon_state.dart';
-import 'package:bloc_pokemon/model/detail_pokemon_model.dart';
-import 'package:bloc_pokemon/model/form_pokemon_model.dart';
-import 'package:bloc_pokemon/model/species_pokemon_model.dart';
-import 'package:bloc_pokemon/repos/repositories.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_pokemon/data/model/detail_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/form_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/species_pokemon_model.dart';
 
-class DetailPokemonBloc extends Bloc<DetailPokemonEvent, DetailPokemonState> {
-  final Repositories repos;
+class DetailPokemonBloc extends BaseBloc<DetailPokemonEvent, DetailPokemonState> {
   final int pokemonId;
 
-  DetailPokemonBloc(this.repos, this.pokemonId)
+  DetailPokemonBloc(this.pokemonId)
       : super(DetailPokemonLoadingState()) {
     on<DetailPokemonEvent>((event, emit) async {
       emit(DetailPokemonLoadingState());

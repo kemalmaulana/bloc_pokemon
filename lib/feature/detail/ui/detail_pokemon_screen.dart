@@ -2,7 +2,6 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:bloc_pokemon/feature/detail/bloc/detail_pokemon_bloc.dart';
 import 'package:bloc_pokemon/feature/detail/bloc/detail_pokemon_event.dart';
 import 'package:bloc_pokemon/feature/detail/bloc/detail_pokemon_state.dart';
-import 'package:bloc_pokemon/repos/repositories.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,8 +16,7 @@ class DetailPokemonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DetailPokemonBloc(
-          RepositoryProvider.of<Repositories>(context), pokemonId)
+      create: (context) => DetailPokemonBloc(pokemonId)
         ..add(LoadDetailPokemon()),
       child: BlocBuilder<DetailPokemonBloc, DetailPokemonState>(
           builder: (_, state) {

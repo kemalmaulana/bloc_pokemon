@@ -1,4 +1,4 @@
-import 'package:bloc_pokemon/model/all_pokemon_model.dart';
+import 'package:bloc_pokemon/data/model/all_pokemon_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
