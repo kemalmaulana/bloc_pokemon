@@ -5,6 +5,10 @@ import 'package:get_it/get_it.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  GetIt.I.registerSingleton<Repositories>(Repositories());
+  setupInjection();
   runApp(const PokemonApp());
+}
+
+setupInjection() {
+  GetIt.I.registerSingleton<Repositories>(Repositories());
 }

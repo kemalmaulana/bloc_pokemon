@@ -1,16 +1,9 @@
-# bloc_pokemon
+# Bloc Template
 
-A new Flutter project.
+## Introducing
+This repo is a template for a project using BLoC Pattern, it's a very simple approaching to a BLoC pattern for a base app.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Feature
+* Dart 3
+* Get.it
+* Will add other ASAP

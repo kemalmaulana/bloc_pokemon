@@ -5,6 +5,7 @@ import 'package:bloc_pokemon/feature/all/bloc/all_pokemon_event.dart';
 import 'package:bloc_pokemon/feature/all/bloc/all_pokemon_state.dart';
 import 'package:bloc_pokemon/feature/detail/ui/detail_pokemon_screen.dart';
 import 'package:bloc_pokemon/data/model/all_pokemon_model.dart';
+import 'package:bloc_pokemon/feature/search/ui/search_pokemon_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,14 @@ class AllPokemonScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Pokédex"),
+          actions: [
+            GestureDetector(
+                onTap: () => context.push(destination: const SearchPokemonScreen()),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(Icons.search),
+                ))
+          ],
         ),
         body: BlocBuilder<AllPokemonBloc, AllPokemonState>(
           builder: (_, state) {
@@ -32,9 +41,10 @@ class AllPokemonScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, Results item,
                               int index) =>
                           InkWell(
-                            onTap: () => context.push(destination: DetailPokemonScreen(
+                            onTap: () => context.push(
+                                destination: DetailPokemonScreen(
                               pokemonId: int.tryParse(
-                                  state.getPokemonId(item.url ?? "-")) ??
+                                      state.getPokemonId(item.url ?? "-")) ??
                                   1,
                               pokemonName: item.name ?? "-",
                             )),
